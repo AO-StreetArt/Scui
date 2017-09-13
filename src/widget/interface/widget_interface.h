@@ -33,8 +33,8 @@ typedef void(*WidgetCallbackFunction)(MouseEventInterface*, KeyboardEventInterfa
 //! NULL Widget Type
 const int NULL_WIDGET = -1;
 
-//! Widget Type for those that don't require any rendering (ie. layouts)
-const int NORENDER_WIDGET = 0;
+//! Widget Type for Grid Layouts
+const int GRIDLAYOUT_WIDGET = 0;
 
 //! Button Widget Type
 const int BUTTON_WIDGET = 1;

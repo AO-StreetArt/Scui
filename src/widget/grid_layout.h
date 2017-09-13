@@ -33,7 +33,7 @@ class GridLayout : public Layout {
   int _cols = 0;
  public:
   ~GridLayout() {}
-  GridLayout() {Widget::set_widget_type(NORENDER_WIDGET);}
+  GridLayout() {Widget::set_widget_type(GRIDLAYOUT_WIDGET);}
 
   //! Set the number of rows in the layout
   void set_rows(int new_rows) {_rows = new_rows;}

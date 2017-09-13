@@ -5,7 +5,7 @@ Please note that only a few widgets have been implemented, this is by no means a
 
 ## Usage
 This library is headers-only, so using it is as simple as copying the src/ folder onto your include path.  Then, you'll use the following include flags:
-    -I<scui_path>/event -I<scui_path>/widget -I<scui_path>/app
+`-I<scui_path>/event -I<scui_path>/widget -I<scui_path>/app`
 
 Please see the example for how to use the library.
 
