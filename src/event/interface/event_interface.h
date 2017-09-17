@@ -30,7 +30,7 @@ const int MOUSE_EVENT = 0;
 const int KEYBOARD_EVENT = 1;
 
 //! Un-assigned Modifier
-const int NULL_MODIFIER = -1;
+const int NULL_MODIFIER = 0;
 
 //! Shift Modifier
 const int SHIFT_MODIFIER = 1;

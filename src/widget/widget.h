@@ -109,6 +109,12 @@ class Widget : public WidgetInterface {
 
   //! Update the Widget in preparation for drawing
   virtual void update() = 0;
+
+  //! Load the OpenGL Widget Components prior to the main loop
+  virtual void load() = 0;
+
+  //! Draw the Widget
+  virtual void draw() = 0;
 };
 
 }  // namespace Scui

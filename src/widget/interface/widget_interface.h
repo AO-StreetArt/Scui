@@ -130,6 +130,12 @@ class WidgetInterface {
   //! Update the Widget in preparation for drawing
   virtual void update() = 0;
 
+  //! Load the OpenGL Widget Components prior to the main loop
+  virtual void load() = 0;
+
+  //! Draw the Widget
+  virtual void draw() = 0;
+
   //! Delete the children in the list, only to be used if the children were
   //! allocated using new
   virtual void clear() = 0;

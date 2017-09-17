@@ -35,10 +35,10 @@ int main(int argc, char** argv) {
   // Setup
   char key = 'a';
   Scui::KeyboardEventInterface *key_event = \
-    factory.build_keyboard_event(key, Scui::SHIFT_MODIFIER + Scui::CTRL_MODIFIER);
+    factory.build_keyboard_event(Scui::_A_KEY, Scui::SHIFT_MODIFIER + Scui::CTRL_MODIFIER);
 
   // Asserts
-  assert(key_event->get_key() == 'a');
+  assert(key_event->get_key() == Scui::_A_KEY);
   assert(key_event->get_modifiers() == (Scui::SHIFT_MODIFIER + Scui::CTRL_MODIFIER));
   assert(key_event->get_modifiers() != (Scui::ALT_MODIFIER + Scui::CTRL_MODIFIER));
   assert(key_event->get_modifiers() != (Scui::ALT_MODIFIER + Scui::SHIFT_MODIFIER));

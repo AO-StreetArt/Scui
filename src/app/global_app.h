@@ -19,27 +19,14 @@ limitations under the License.
 
 #include "interface/widget_interface.h"
 
-#ifndef SRC_APP_APP_H_
-#define SRC_APP_APP_H_
+#ifndef SRC_APP_GLOBAL_APP_H_
+#define SRC_APP_GLOBAL_APP_H_
 
 namespace Scui {
 
-//! A Scui App holds a Widget Tree, and is responsible for actually rendering
-//! The UI that's been constructed
-class App {
-  WidgetInterface *_root = NULL;
-
- public:
-  virtual ~App() {}
-  //! Retrieve the root of the widget tree
-  WidgetInterface* get_root() {return _root;}
-  //! Set the root of the widget tree
-  void set_root(WidgetInterface *new_root) {_root = new_root;}
-
-  //! Run the application
-  virtual void run() = 0;
-};
+// Global App object which exposes the widget tree to callbacks
+App *application = NULL;
 
 }  // namespace Scui
 
-#endif  // SRC_APP_APP_H_
+#endif  // SRC_APP_GLOBAL_APP_H_

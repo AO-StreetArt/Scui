@@ -37,6 +37,18 @@ class Layout : virtual public Widget {
   //! correctly, setting their x, y, width, and height values before calling
   //! their respective draw() functions.
   virtual void update() = 0;
+
+  //! Load the OpenGL Widget Components prior to the main loop
+  void load() {
+    for (int i = 0; i < Widget::num_children(); i++) \
+      {Widget::get_child(i)->load();}
+  }
+
+  //! Draw the Widget
+  void draw() {
+    for (int i = 0; i < Widget::num_children(); i++) \
+      {Widget::get_child(i)->draw();}
+  }
 };
 
 }  // namespace Scui

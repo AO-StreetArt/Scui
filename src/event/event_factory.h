@@ -34,6 +34,8 @@ class EventFactory {
   // Build a mouse event
   MouseEventInterface* build_mouse_event(float x, float y, int but, int mods) \
     {return new MouseInputEvent(x, y, but, mods);}
+  MouseEventInterface* build_mouse_event(double x, double y, int but, int mods) \
+    {return build_mouse_event((float)x, (float)y, but, mods);}
   // Build a keyboard event
   // The key passed in must remain in-scope and valid for the duration of the
   // Event Interface

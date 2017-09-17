@@ -99,6 +99,18 @@ class TextBox : public Label {
   //! Do nothing intentionally
   //! Non-layouts can leave this method blank
   void update() {}
+
+  //! TO-DO: Load the OpenGL Widget Components prior to the main loop
+  void load() {
+    for (int i = 0; i < Widget::num_children(); i++) \
+      {Widget::get_child(i)->load();}
+  }
+
+  //! TO-DO: Draw the Widget
+  void draw() {
+    for (int i = 0; i < Widget::num_children(); i++) \
+      {Widget::get_child(i)->draw();}
+  }
 };
 
 }  // namespace Scui
