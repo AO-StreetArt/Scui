@@ -6,7 +6,7 @@ TESTS = event_test widget_test
 INCL_DIRS = -Isrc/event -Isrc/widget
 RM = rm -f
 
-.PHONY: mktest
+.PHONY: mktest installsrc installasset installbase
 
 test: mktest $(TESTS)
 	./event_test
@@ -23,3 +23,17 @@ widget_test:
 
 clean:
 	$(RM) test/*/*.o *~ *_test
+
+install: installbase installsrc installasset
+
+installsrc:
+	@$(MAKE) install -C src
+
+installasset:
+	@$(MAKE) install -C asset
+
+installbase:
+	sudo mkdir /usr/local/include/scui /usr/local/share/scui
+
+uninstall:
+	sudo $(RM) -r /usr/local/include/scui /usr/local/share/scui

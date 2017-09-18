@@ -1,0 +1,3 @@
+*.o
+example/*/hello_world
+example/*/basic
