@@ -11,6 +11,7 @@ addons:
 install:
 - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-5 /usr/bin/gcc
 - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-5 /usr/bin/g++
+- sudo apt-get update
 - mkdir ../scui_deps
 - sudo cp script/linux/deb/build_deps.sh ../scui_deps
 - cd ../scui_deps && sudo ./build_deps.sh
@@ -23,4 +24,5 @@ script:
 - make examples
 - sudo make install
 - make clean
+- make tests INCL_DIR=-I.
 - make examples INCL_DIR=-I.
