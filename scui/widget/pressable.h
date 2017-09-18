@@ -17,11 +17,11 @@ limitations under the License.
 
 #include <string>
 
-#include "interface/mouse_event_interface.h"
-#include "interface/keyboard_event_interface.h"
+#include "scui/event/interface/mouse_event_interface.h"
+#include "scui/event/interface/keyboard_event_interface.h"
 
-#include "interface/widget_interface.h"
-#include "widget.h"
+#include "scui/widget/interface/widget_interface.h"
+#include "scui/widget/widget.h"
 
 #ifndef SRC_WIDGET_PRESSABLE_H_
 #define SRC_WIDGET_PRESSABLE_H_

@@ -15,11 +15,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Include OpenGL
-#include <GL/gl.h>
-
 // Include GLEW
 #include <GL/glew.h>
+
+// Include OpenGL
+#include <GL/gl.h>
 
 // Include GLFW
 #include <GLFW/glfw3.h>
@@ -29,7 +29,7 @@ limitations under the License.
 #include <glm/gtc/matrix_transform.hpp>
 
 // Include SOIL
-#include <SOIL/soil.h>
+#include <SOIL/SOIL.h>
 
 // Include other system libraries
 #include <sys/stat.h>
@@ -143,6 +143,8 @@ namespace Scui {
     glLinkProgram(programID);
 
     // Check to ensure correct linkage
+    GLint result = GL_FALSE;
+    int compile_log_len;
     glGetProgramiv(programID, GL_LINK_STATUS, &result);
     glGetProgramiv(programID, GL_INFO_LOG_LENGTH, &compile_log_len);
     if (compile_log_len > 0) {
@@ -182,7 +184,7 @@ namespace Scui {
 
     // Set up the texture to display a white color outisde the image boundaries
     float backg_color[] = {1.0f, 1.0f, 1.0f, 1.0f};
-    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, color);
+    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, backg_color);
 
     // Generate Mipmaps of the texture
     glGenerateMipmap(GL_TEXTURE_2D);

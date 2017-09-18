@@ -2,8 +2,8 @@ CC = g++
 CFLAGS  = -g -Wall
 STD = -std=c++11
 OBJS = main.o hello_world
-INCL_DIRS = -I$(CURDIR)/../../src/event -I$(CURDIR)/../../src/widget -I$(CURDIR)/../../src/app
-LINK_DIRS = -lglfw -lGLEW -lGL
+INCL_DIRS = -I../../
+LINK_DIRS = -lglfw -lGLEW -lGL -lSOIL
 RM = rm -f
 
 default: $(OBJS)

@@ -17,15 +17,15 @@ limitations under the License.
 
 #include <iostream>
 
-#include "interface/event_interface.h"
-#include "interface/mouse_event_interface.h"
-#include "interface/keyboard_event_interface.h"
+#include "scui/event/interface/event_interface.h"
+#include "scui/event/interface/mouse_event_interface.h"
+#include "scui/event/interface/keyboard_event_interface.h"
 
-#include "interface/widget_interface.h"
-#include "label.h"
-#include "grid_layout.h"
+#include "scui/widget/interface/widget_interface.h"
+#include "scui/widget/label.h"
+#include "scui/widget/grid_layout.h"
 
-#include "opengl_app.h"
+#include "scui/app/opengl_app.h"
 
 // Escape callback function for the base layout to ensure we can exit
 void escape_callback(Scui::MouseEventInterface* mouse_event, Scui::KeyboardEventInterface* keyboard_event) {

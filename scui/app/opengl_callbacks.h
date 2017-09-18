@@ -18,15 +18,15 @@ limitations under the License.
 // Include GLFW
 #include <GLFW/glfw3.h>
 
-#include "event_factory.h"
-#include "interface/event_interface.h"
-#include "interface/mouse_event_interface.h"
-#include "interface/keyboard_event_interface.h"
+#include "scui/event/event_factory.h"
+#include "scui/event/interface/event_interface.h"
+#include "scui/event/interface/mouse_event_interface.h"
+#include "scui/event/interface/keyboard_event_interface.h"
 
-#include "interface/widget_interface.h"
+#include "scui/widget/interface/widget_interface.h"
 
-#include "app.h"
-#include "global_app.h"
+#include "scui/app/app.h"
+#include "scui/app/global_app.h"
 
 #ifndef SRC_APP_OPENGL_CALLBACKS_H_
 #define SRC_APP_OPENGL_CALLBACKS_H_

@@ -2,7 +2,7 @@ CC = g++
 CFLAGS  = -g -Wall
 STD = -std=c++11
 TESTS = event_test.o
-INCL_DIRS = -I$(CURDIR)/../../src/event
+INCL_DIRS = -I$(CURDIR)/../../
 
 default: $(TESTS)
 

@@ -17,12 +17,12 @@ limitations under the License.
 
 #include <string>
 
-#include "interface/mouse_event_interface.h"
-#include "interface/keyboard_event_interface.h"
+#include "scui/event/interface/mouse_event_interface.h"
+#include "scui/event/interface/keyboard_event_interface.h"
 
-#include "interface/widget_interface.h"
-#include "widget.h"
-#include "label.h"
+#include "scui/widget/interface/widget_interface.h"
+#include "scui/widget/widget.h"
+#include "scui/widget/label.h"
 
 #ifndef SRC_WIDGET_TEXT_BOX_H_
 #define SRC_WIDGET_TEXT_BOX_H_

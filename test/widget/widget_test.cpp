@@ -19,17 +19,17 @@ limitations under the License.
 
 #include <iostream>
 
-#include "interface/event_interface.h"
-#include "interface/mouse_event_interface.h"
-#include "interface/keyboard_event_interface.h"
+#include "scui/event/interface/event_interface.h"
+#include "scui/event/interface/mouse_event_interface.h"
+#include "scui/event/interface/keyboard_event_interface.h"
 
-#include "event_factory.h"
+#include "scui/event/event_factory.h"
 
-#include "interface/widget_interface.h"
-#include "label.h"
-#include "button.h"
-#include "text_box.h"
-#include "grid_layout.h"
+#include "scui/widget/interface/widget_interface.h"
+#include "scui/widget/label.h"
+#include "scui/widget/button.h"
+#include "scui/widget/text_box.h"
+#include "scui/widget/grid_layout.h"
 
 // on_press callback function for the test button
 void button_callback(Scui::MouseEventInterface* mouse_event, Scui::KeyboardEventInterface* keyboard_event) {

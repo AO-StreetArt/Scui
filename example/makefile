@@ -2,7 +2,7 @@
 
 .PHONY: mkhw mkbasic
 
-all: mkhw mkbasic
+all: mkhw
 
 mkhw:
 	@$(MAKE) -C hello_world

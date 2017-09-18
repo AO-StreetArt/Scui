@@ -19,11 +19,11 @@ limitations under the License.
 
 #include <iostream>
 
-#include "interface/event_interface.h"
-#include "interface/mouse_event_interface.h"
-#include "interface/keyboard_event_interface.h"
+#include "scui/event/interface/event_interface.h"
+#include "scui/event/interface/mouse_event_interface.h"
+#include "scui/event/interface/keyboard_event_interface.h"
 
-#include "event_factory.h"
+#include "scui/event/event_factory.h"
 
 int main(int argc, char** argv) {
   std::cout << "Starting Event Test" << std::endl;
@@ -33,7 +33,6 @@ int main(int argc, char** argv) {
   // Keyboard Event Tests
 
   // Setup
-  char key = 'a';
   Scui::KeyboardEventInterface *key_event = \
     factory.build_keyboard_event(Scui::_A_KEY, Scui::SHIFT_MODIFIER + Scui::CTRL_MODIFIER);
 

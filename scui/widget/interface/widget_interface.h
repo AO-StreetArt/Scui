@@ -17,8 +17,8 @@ limitations under the License.
 
 #include <string>
 
-#include "interface/mouse_event_interface.h"
-#include "interface/keyboard_event_interface.h"
+#include "scui/event/interface/mouse_event_interface.h"
+#include "scui/event/interface/keyboard_event_interface.h"
 
 #ifndef SRC_WIDGET_INTERFACE_WIDGET_INTERFACE_H_
 #define SRC_WIDGET_INTERFACE_WIDGET_INTERFACE_H_

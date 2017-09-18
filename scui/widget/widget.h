@@ -17,10 +17,10 @@ limitations under the License.
 
 #include <vector>
 
-#include "interface/mouse_event_interface.h"
-#include "interface/keyboard_event_interface.h"
+#include "scui/event/interface/mouse_event_interface.h"
+#include "scui/event/interface/keyboard_event_interface.h"
 
-#include "interface/widget_interface.h"
+#include "scui/widget/interface/widget_interface.h"
 
 #ifndef SRC_WIDGET_WIDGET_H_
 #define SRC_WIDGET_WIDGET_H_

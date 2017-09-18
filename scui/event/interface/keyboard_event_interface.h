@@ -15,8 +15,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include "event_interface.h"
-#include "input_event.h"
+#include "scui/event/interface/event_interface.h"
+#include "scui/event/input_event.h"
 
 #ifndef SRC_EVENT_INTERFACE_KEYBOARD_EVENT_INTERFACE_H_
 #define SRC_EVENT_INTERFACE_KEYBOARD_EVENT_INTERFACE_H_

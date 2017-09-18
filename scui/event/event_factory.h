@@ -15,11 +15,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include "interface/mouse_event_interface.h"
-#include "interface/keyboard_event_interface.h"
+#include "scui/event/interface/mouse_event_interface.h"
+#include "scui/event/interface/keyboard_event_interface.h"
 
-#include "keyboard_input_event.h"
-#include "mouse_input_event.h"
+#include "scui/event/keyboard_input_event.h"
+#include "scui/event/mouse_input_event.h"
 
 #ifndef SRC_EVENT_EVENT_FACTORY_H_
 #define SRC_EVENT_EVENT_FACTORY_H_

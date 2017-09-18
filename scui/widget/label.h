@@ -17,13 +17,13 @@ limitations under the License.
 
 #include <string>
 
-#include "interface/mouse_event_interface.h"
-#include "interface/keyboard_event_interface.h"
+#include "scui/event/interface/mouse_event_interface.h"
+#include "scui/event/interface/keyboard_event_interface.h"
 
-#include "interface/widget_interface.h"
-#include "widget.h"
+#include "scui/widget/interface/widget_interface.h"
+#include "scui/widget/widget.h"
 
-#include "opengl_utils.h"
+#include "scui/app/opengl_utils.h"
 
 #ifndef SRC_WIDGET_LABEL_H_
 #define SRC_WIDGET_LABEL_H_
@@ -38,6 +38,7 @@ class Label : virtual public Widget {
   std::string _font_texture_file = "/usr/local/share/scui/asset/texture/text/TNR.bmp";
 
   // Private attributes
+  bool loaded = false;
   GLuint text_textureID;
   GLuint text_vboID;
   GLuint text_uvID;
@@ -45,10 +46,12 @@ class Label : virtual public Widget {
   GLuint text_uniformID;
  public:
   inline ~Label() {
-    glDeleteBuffers(1, &text_vboID);
-    glDeleteBuffers(1, &text_vboID);
-    glDeleteTextures(1, &text_uvID);
-    glDeleteProgram(text_shaderID);
+    if (loaded) {
+      glDeleteBuffers(1, &text_vboID);
+      glDeleteBuffers(1, &text_vboID);
+      glDeleteTextures(1, &text_uvID);
+      glDeleteProgram(text_shaderID);
+    }
   }
   inline Label() {Widget::set_widget_type(LABEL_WIDGET);}
 
@@ -79,7 +82,8 @@ class Label : virtual public Widget {
   //! Load the OpenGL Widget Components prior to the main loop
   inline void load() {
     // Load the Texture file
-    text_textureID = load_texture(_font_texture_file);
+    const char * font_tex_cstr = _font_texture_file.c_str();
+    text_textureID = load_texture(font_tex_cstr);
 
     // Initialize the VBO
     glGenBuffers(1, &text_vboID);
@@ -88,10 +92,12 @@ class Label : virtual public Widget {
     // Setup the shaders
     text_shaderID = \
       compile_shaders("/usr/local/share/scui/asset/shader/text/text_vertex_shader.glsl", \
-                      "/usr/local/share/scui/asset/shader/text/text_fragment_shader.glsl")
+                      "/usr/local/share/scui/asset/shader/text/text_fragment_shader.glsl");
 
     // Initialize the handle to the texture sampler
     text_uniformID = glGetUniformLocation(text_shaderID, "myTextureSampler");
+
+    loaded = true;
 
     // Load the children
     for (int i = 0; i < Widget::num_children(); i++) \
@@ -100,19 +106,24 @@ class Label : virtual public Widget {
 
   //! Draw the Widget
   void draw() {
-    int x = Widget::get_x();
-    int y = Widget::get_y();
     int size = _text.size();
     // Fill up our buffers
     std::vector<glm::vec2> verts;
     std::vector<glm::vec2> uvs;
-    for (unsigned int = 0; i < size; i++) {
+    for (int i = 0; i < size; i++) {
       // Build the verts for our rectangle (2 triangles)
       // This only works for a single row of text
-      glm::vec2 vertex_up_left = glm::vec2(x+i*size, y+size);
-      glm::vec2 vertex_up_right = glm::vec2(x+i*size+size, y+size);
-      glm::vec2 vertex_down_right = glm::vec2(x+i*size+size, y);
-      glm::vec2 vertex_down_left = glm::vec2(x+i*size, y);
+      glm::vec2 vertex_up_left = \
+        glm::vec2(Widget::get_x()+i*size, Widget::get_y()+size);
+
+      glm::vec2 vertex_up_right = \
+        glm::vec2(Widget::get_x()+i*size+size, Widget::get_y()+size);
+
+      glm::vec2 vertex_down_right = \
+        glm::vec2(Widget::get_x()+i*size+size, Widget::get_y());
+
+      glm::vec2 vertex_down_left = \
+        glm::vec2(Widget::get_x()+i*size, Widget::get_y());
 
       // Add the vertices to our list, that will be passed to OpenGL
       verts.push_back(vertex_up_left);
@@ -124,7 +135,7 @@ class Label : virtual public Widget {
       verts.push_back(vertex_down_left);
 
       // Determine the UV Coordinates
-      char character = text[i];
+      char character = _text[i];
       float uv_x = (character%16)/16.0f;
       float uv_y = (character/16)/16.0f;
 
@@ -156,21 +167,21 @@ class Label : virtual public Widget {
     glUseProgram(text_shaderID);
 
     // Bind texture
-    glActivateTexture(GL_TEXTURE0);
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, text_textureID);
 
-    // Set "myTextureSampler" sampler to suer Texture unit 0
-    glUniformli(text_uniformID, 0);
+    // Set "myTextureSampler" sampler to user Texture unit 0
+    glUniform1i(text_uniformID, 0);
 
     // Bind 1st buffer
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, text_vboID);
-    glVertexAttribPointer(0, 2, GL_FLOAT, FL_FALSE, 0, (void*)0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
     // Bind the 2nd buffer
     glEnableVertexAttribArray(1);
     glBindBuffer(GL_ARRAY_BUFFER, text_uvID);
-    glVertexAttribPointer(1, 2, GL_FLOAT, FL_FALSE, 0, (void*)0);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
     // Enable Blending and Alpha
     glEnable(GL_BLEND);
